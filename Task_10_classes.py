@@ -23,9 +23,9 @@ class Birthday(Field):
     pass
 
 class Record():
-    def __init__(self, name, phone):
+    def __init__(self, name):
         self.name = Name(name)
         self.phone = []
         # self.birthday = Birthday(birthday)
- 
-contacts_dict = AddressBook()
+    def put_phone_list(self):
+        return self.phone.append(Phone(phone))
