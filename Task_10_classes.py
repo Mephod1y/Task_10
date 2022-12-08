@@ -27,5 +27,6 @@ class Record():
         self.name = Name(name)
         self.phone = []
         # self.birthday = Birthday(birthday)
-    def put_phone_list(self):
-        return self.phone.append(Phone(phone))
+    def put_phone_list(self, phones):
+        return self.phone.append(Phone(phones))
+ 
