@@ -37,11 +37,12 @@ def name_phone(data):
 
 @input_error
 def add_name_phone(data):
-    name, phone = name_phone(data)
+    name, phones = name_phone(data)
     if name in contacts_dict:
         raise ValueError('This contact already exist.')
     # contacts_dict[name] = phone
     record = Record(name)
+    record.put_phone_list(phones)
     contacts_dict.add_record(record)
     return f'You added new contact: {name} with this {phone}'
 
