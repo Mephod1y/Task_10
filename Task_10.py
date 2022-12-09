@@ -1,6 +1,6 @@
-import Task_10_classes
-# contacts_dict = {}
-contact_dict = AddressBook()
+from Task_10_classes import AddressBook, Record
+
+contacts_dict = AddressBook()
 
 def input_error(function):
     def wrapper(*args, **kwargs):
@@ -25,7 +25,7 @@ def exit_func():
     return "Good bye"
 
 @input_error
-def name_phone(data):
+def name_phone(data):  # функція перевіряє на коректність введення ім'я телефону
     new_data = data.strip().split(" ")
     name = new_data[0]
     phone = new_data[1]
@@ -36,7 +36,7 @@ def name_phone(data):
     return name, phone
 
 @input_error
-def add_name_phone(data):
+def add_name_phone(data):  # функція додає ведене ім'я телефон до екземляру класу Record
     name, phones = name_phone(data)
     if name in contacts_dict:
         raise ValueError('This contact already exist.')
@@ -44,13 +44,13 @@ def add_name_phone(data):
     record = Record(name)
     record.put_phone_list(phones)
     contacts_dict.add_record(record)
-    return f'You added new contact: {name} with this {phone}'
+    return f'You added new contact: {name} with this {phones}'
 
 @input_error
 def show_all():
     contacts = ''
-    for key, value in contacts_dict.items():
-        contacts += f'{key} : {value}\n'
+    for record in contacts_dict:
+        contacts += f'{name} : {phone.value}\n'
     return contacts
 
 @input_error
