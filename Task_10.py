@@ -40,7 +40,6 @@ def add_name_phone(data):  # функція додає ведене ім'я те
     name, phones = name_phone(data)
     if name in contacts_dict:
         raise ValueError('This contact already exist.')
-    # contacts_dict[name] = phone
     record = Record(name)
     record.put_phone_list(phones)
     contacts_dict.add_record(record)
@@ -48,9 +47,11 @@ def add_name_phone(data):  # функція додає ведене ім'я те
 
 @input_error
 def show_all():
-    contacts = ''
-    for record in contacts_dict:
-        contacts += f'{name} : {phone.value}\n'
+    contacts = "All data in AddressBook:"
+    for name in contacts_dict:
+        contacts += f'\n{name}: '
+        for phone in contacts_dict[name].phones:
+            contacts += f"{phone.value}"
     return contacts
 
 @input_error
@@ -62,10 +63,13 @@ def change_phone(data):
     return 'Use add command'
 
 @input_error
-def show_phone(name):
-    if name.strip() not in contacts_dict:
-        raise ValueError('This contact does not exist')
-    return contacts_dict.get(name.strip())
+def show_phone(user_input):
+    phones = ""
+    user_input = user_input.split()
+    name = user_input[1]
+    for phone in (contacts_dict[name]).phones:
+        phones += f"{phone.value}; "
+    return phones
 
 functions = {
     'hello': hello,
