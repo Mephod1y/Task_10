@@ -60,10 +60,10 @@ def change_phone(user_input):  # функція змінює телефон по
     name = user_input[0]
     current_phone = user_input[1]
     new_phone = user_input[2]
-    contacts_dict[name].change_phone(current_phone, new_phone)
+    return contacts_dict[name].change(current_phone, new_phone)
 
 @input_error
-def show_phone(user_input):
+def show_phone(user_input): # функція повертає телефон по ключу в словнику AddressBook
     phones = ""
     user_input = user_input.split()
     name = user_input[0]
