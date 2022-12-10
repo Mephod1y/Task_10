@@ -48,7 +48,7 @@ class Record():
                 print(f"{phone_new} already recorded for {self.name.value}")
         self.phones.append(Phone(phone_new))
 
-    def change_phone(self, phone_old, phone_new):
+    def change(self, phone_old, phone_new):
 
         phone_old = Phone(phone_old).value
         phone_new = Phone(phone_new).value
