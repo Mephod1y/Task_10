@@ -46,7 +46,7 @@ def add_name_phone(data):  # функція додає ведене ім'я те
     return f'You added new contact: {name} with this {phones}'
 
 @input_error
-def show_all():
+def show_all():  # функція повертає всі записи в словнику AddressBook
     contacts = "All data in AddressBook:"
     for name in contacts_dict:
         contacts += f'\n{name}: '
@@ -55,20 +55,20 @@ def show_all():
     return contacts
 
 @input_error
-def change_phone(data):
-    name, phone = name_phone(data)
-    if name in contacts_dict:
-        contacts_dict[name] = phone
-        return f'You changed number to {phone} for {name}'
-    return 'Use add command'
+def change_phone(user_input):  # функція змінює телефон по ключу в словнику AddressBook
+    user_input = user_input.split()
+    name = user_input[0]
+    current_phone = user_input[1]
+    new_phone = user_input[2]
+    contacts_dict[name].change_phone(current_phone, new_phone)
 
 @input_error
 def show_phone(user_input):
     phones = ""
     user_input = user_input.split()
-    name = user_input[1]
+    name = user_input[0]
     for phone in (contacts_dict[name]).phones:
-        phones += f"{phone.value}; "
+        phones += f"{phone.value} "
     return phones
 
 functions = {
